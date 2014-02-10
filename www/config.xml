@@ -4,9 +4,9 @@
         id        = "com.phonegap.ryanw.barcodedemo"
         version   = "2.0.0">
 
-			<name>Total IT BarcodeScanner</name>
+			<name>Total IT FMCG</name>
 			<description>
-				Testing Program: Barcode Scanner
+				Fast Moving Consumer Good: ver.1.01
 			</description>
 			
 			<author href="http://totalit.co.id/" email="support@totalit.co.id">
