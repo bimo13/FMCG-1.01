@@ -2,11 +2,11 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.phonegap.example"
-        version   = "2.0.0">
+        version   = "1.0.1">
 
 			<name>Total IT FMCG</name>
 			<description>
-				Fast Moving Consumer Good: ver.1.01
+				Fast Moving Consumer Good: ver.1.0.1
 			</description>
 			
 			<author href="http://totalit.co.id/" email="support@totalit.co.id">
