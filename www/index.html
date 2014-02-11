@@ -66,6 +66,33 @@
         <script src="includes/js/jquery-1.11.0.min.js" type="text/javascript"></script>
         <script src="includes/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="includes/js/jquery.validate.min.js" type="text/javascript"></script>
+        
+        <script>
+        	
+			//DeviceReady function
+			document.addEventListener('deviceready', function(){
+				document.addEventListener("backbutton", ShowExitDialog, false);
+			}, false);
+			
+			// Dialog box when back button is pressed
+			function ShowExitDialog() {
+				navigator.notification.confirm(
+					("Anda yakin ingin keluar?"), // message
+					alertexit, // callback
+					'Total IT FMCG', // title
+					'YES,NO' // buttonName
+				);
+			}
+			
+			// Call exit function
+			function alertexit(button){
+				if(button=="1" || button==1){
+					device.exitApp();
+				}
+			}
+			
+        </script>
+        
         <script>
         	
 			$('#form-signin').validate({
