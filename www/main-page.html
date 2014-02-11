@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>FMCG</title>
+        
+        <!-- Bootstrap core CSS -->
+    	<link href="includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- Custom styles for index.html -->
+    	<link href="includes/css/main-page.css" rel="stylesheet">
+        
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        
+    </head>
+    
+    <body>
+    	
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Total IT FMCG</a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="container">
+        	<div class="link-button">
+            	<div class="input-group input-group-lg">
+                	<button type="button" class="btn btn-default btn-lg btn-block">Form Pemesanan</button>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-chevron-right"></span></span>
+                </div>
+                <div class="input-group input-group-lg">
+                	<button type="button" class="btn btn-default btn-lg btn-block" onClick="logout();">Sign Out</button>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-chevron-right"></span></span>
+                </div>
+            </div>
+            <p class="messages">
+                <span class="text-messages"></span>
+            </p>
+        </div>
+        
+        <!-- "Please Wait" Dialog -->
+        <div class="modal fade" id="pleasewait" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myWaitingModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                    	<h4 class="modal-title" id="myWaitingModal">Harap tunggu...</h4>
+                    	<div class="progress progress-striped active">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- "Exit" Dialog -->
+        <div class="modal fade bs-modal-sm" id="exitdialog" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myExitModal" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">
+                    	<h4 class="modal-title" id="myExitModal">Anda yakin ingin keluar ?</h4>
+                    </div>
+                    <div class="modal-footer">
+                    	<button type="button" class="btn btn-default" onClick="closeApp();"><span class="glyphicon glyphicon-ok"></span> Ya</button><button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Tidak</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="cordova.js" type="text/javascript"></script>
+        <script src="includes/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+        <script src="includes/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        
+        <script src="includes/js/func-closeApp.js"></script>
+        <script>
+        	
+			function logout(){
+				$("#pleasewait").modal();
+				
+				$.post(
+					// URL
+					//
+					"http://demo.totalindo.net/fcmg/web-service/logout.php",
+					// When Succeeded
+					//
+					function(data){
+						if(data['status'] != 1){
+							$("#pleasewait").modal('hide');
+							
+							$(".messages").addClass('bg-danger');
+							$(".text-messages").empty();
+							$(".text-messages").addClass('text-danger');
+							$(".text-messages").append(data['message']);
+						}else{
+							window.location.href="index.html";
+						}
+					},
+					"json"
+				);
+			}
+			
+        </script>
+        
+    </body>
+    
+</html>
