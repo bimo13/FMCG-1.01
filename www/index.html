@@ -70,7 +70,7 @@
                     	<h4 class="modal-title" id="myExitModal">Anda yakin ingin keluar ?</h4>
                     </div>
                     <div class="modal-footer">
-                    	<button type="button" class="btn btn-default" onClick="closeApp();">Ya</button><button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
+                    	<button type="button" class="btn btn-default" onClick="closeApp();"><span class="glyphicon glyphicon-ok"></span> Ya</button><button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Tidak</button>
                     </div>
                 </div>
             </div>
@@ -78,27 +78,10 @@
         
         <script src="cordova.js" type="text/javascript"></script>
         <script src="includes/js/jquery-1.11.0.min.js" type="text/javascript"></script>
-        <script src="includes/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="includes/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="includes/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         
-        <script>
-        	
-			//DeviceReady function
-			document.addEventListener('deviceready', function(){
-				document.addEventListener("backbutton", ShowExitDialog, false);
-			}, false);
-			
-			//Dialog popup
-			function ShowExitDialog(){
-				$("#exitdialog").modal();
-			}
-			
-			//Exit function
-			function closeApp(){
-				navigator.app.exitApp();
-			}
-			
-        </script>
+        <script src="includes/js/func-closeApp.js"></script>
         
         <script>
         	
@@ -136,14 +119,12 @@
         <script>
 			
 			function submitLogin(){
-				
 				$("#pleasewait").modal();
 				
 				var log_username	=	$("#username").val();
 				var log_password	=	$("#password").val();
 				
 				$.post(
-					
 					// URL
 					//
 					"http://demo.totalindo.net/fcmg/web-service/login-service.php",
@@ -156,27 +137,19 @@
 					// When Succeeded
 					//
 					function(data){
-						
 						if(data['status'] != 1){
-							
 							$("#pleasewait").modal('hide');
 							
 							$(".messages").addClass('bg-danger');
 							$(".text-messages").empty();
 							$(".text-messages").addClass('text-danger');
 							$(".text-messages").append(data['message']);
-							
 						}else{
-							
 							window.location.href	=	"main-page.html";
-							
 						}
-						
 					},
 					"json"
-					
 				);
-				
 			}
 			
         </script>
