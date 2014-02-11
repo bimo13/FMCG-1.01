@@ -70,7 +70,7 @@
                     	<h4 class="modal-title" id="myExitModal">Anda yakin ingin keluar ?</h4>
                     </div>
                     <div class="modal-footer">
-                    	<button type="button" class="btn btn-default">Ya</button><button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
+                    	<button type="button" class="btn btn-default" onClick="closeApp();">Ya</button><button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
                     </div>
                 </div>
             </div>
@@ -85,13 +85,17 @@
         	
 			//DeviceReady function
 			document.addEventListener('deviceready', function(){
-				alert("success");
 				document.addEventListener("backbutton", ShowExitDialog, false);
 			}, false);
 			
 			//Dialog popup
 			function ShowExitDialog(){
 				$("#exitdialog").modal();
+			}
+			
+			//Exit function
+			function closeApp(){
+				navigator.app.exitApp();
 			}
 			
         </script>
