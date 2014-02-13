@@ -25,7 +25,7 @@ var app = {
 			
 			var scan_result		=	result.text+"<br />"+result.format+"<br />"+result.cancelled
 			
-			if(result.cancelled == "false"){
+			if(result.cancelled === false){
 				$("#err_alert_text").empty();
 				$("#err_alert_text").append(scan_result);
 				$("#errordialog").modal();
