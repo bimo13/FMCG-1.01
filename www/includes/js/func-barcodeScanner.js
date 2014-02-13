@@ -25,9 +25,15 @@ var app = {
 			
 			var scan_result		=	result.text+"<br />"+result.format+"<br />"+result.cancelled
 			
-			$("#err_alert_text").empty();
-			$("#err_alert_text").append(scan_result);
-			$("#errordialog").modal();
+			if(result.cancelled == "false"){
+				$("#err_alert_text").empty();
+				$("#err_alert_text").append(scan_result);
+				$("#errordialog").modal();
+			}else{
+				$("#err_alert_text").empty();
+				$("#err_alert_text").append("<i>Barcode Scan</i> dibatalkan.");
+				$("#errordialog").modal();
+			}
 			
 			console.log(
 				"Scanner result: \n" +
@@ -36,8 +42,11 @@ var app = {
 				"cancelled: " + result.cancelled + "\n"
 			);
 			console.log(result);
-		}, function(error) {
-			console.log("Scanning failed: ", error); 
+		}, function(error){
+			$("#err_alert_text").empty();
+			$("#err_alert_text").append("Scanning failed: ", error);
+			$("#errordialog").modal();
+			console.log("Scanning failed: ", error);
 		});
 	}
 };
