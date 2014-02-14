@@ -42,7 +42,7 @@ var app = {
 								if(data['status'] != 1){
 									$("#pleasewait").modal('hide');
 									$("#err_alert_text").empty();
-									$("#err_alert_text").append(data['message']);
+									$("#err_alert_text").append("Disini Error no. 1");
 									$("#errordialog").modal();
 								}else{
 									$("#pleasewait").modal('hide');
