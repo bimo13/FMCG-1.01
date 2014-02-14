@@ -25,6 +25,12 @@ function delete_dataToko(){
 				$("#pemilik_alamat").val("");
 				$("#pemilik_telp").val("");
 				$("#pemilik_mail").val("");
+				
+				$("#trx_toko_id").val("");
+				$("#trx_data_id").val("");
+				
+				$("#pleasewait").modal('hide');
+				
 				$("#pemilik_kelamin_p").attr("checked",false).checkboxradio("refresh");
 				$("#pemilik_kelamin_l").attr("checked",false).checkboxradio("refresh");
 				
@@ -32,10 +38,7 @@ function delete_dataToko(){
 				$("#button_scan_barcode").attr('disabled',false);
 				$("#button_konfirmasi_toko").attr('disabled',false);
 				
-				$("#trx_toko_id").val("");
-				$("#trx_data_id").val("");
 				$("#button_del_trx").addClass('hide');
-				$("#pleasewait").modal('hide');
 			}else{
 				$("#pleasewait").modal('hide');
 				$("#err_alert_text").empty();
