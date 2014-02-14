@@ -28,15 +28,14 @@ function delete_dataToko(){
 				$("#trx_toko_id").val("");
 				$("#trx_data_id").val("");
 				
-				$("#pleasewait").modal('hide');
-				
 				$("#toko_id").attr('disabled',false);
 				$("#button_scan_barcode").attr('disabled',false);
 				$("#button_konfirmasi_toko").attr('disabled',false);
-				$("#button_del_trx").addClass('hide');
-				
 				$("#pemilik_kelamin_p").attr("checked",false);
 				$("#pemilik_kelamin_l").attr("checked",false);
+				$("#button_del_trx").addClass('hide');
+				
+				$("#pleasewait").modal('hide');
 			}else{
 				$("#pleasewait").modal('hide');
 				$("#err_alert_text").empty();
