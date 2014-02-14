@@ -1,4 +1,14 @@
 function delete_dataToko(){
+	
+	var trx_toko_id = $("#trx_toko_id").val();
+	var trx_data_id = $("#trx_data_id").val();
+	
+	$("#pleasewait").modal('hide');
+	$("#err_alert_text").empty();
+	$("#err_alert_text").append("ID Toko : "+trx_toko_id+" | ID Data : "+trx_data_id);
+	$("#errordialog").modal();
+	
+	/*
 	$("#pleasewait").modal();
 	
 	var trx_toko_id = $("#trx_toko_id").val();
@@ -43,5 +53,5 @@ function delete_dataToko(){
 		},
 		"json"
 	);
-	
+	*/
 }
