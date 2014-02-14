@@ -1,5 +1,7 @@
 function delete_dataToko(){
 	
+	$("#pleasewait").modal();
+	
 	var trx_toko_id = $("#trx_toko_id").val();
 	var trx_data_id = $("#trx_data_id").val();
 	
