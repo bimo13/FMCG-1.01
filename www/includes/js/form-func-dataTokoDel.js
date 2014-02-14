@@ -35,6 +35,7 @@ function delete_dataToko(){
 				$("#trx_toko_id").val("");
 				$("#trx_data_id").val("");
 				$("#button_del_trx").addClass('hide');
+				$("#pleasewait").modal('hide');
 			}else{
 				$("#pleasewait").modal('hide');
 				$("#err_alert_text").empty();
