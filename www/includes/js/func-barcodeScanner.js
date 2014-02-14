@@ -29,14 +29,30 @@ var app = {
 				}else{
 					var id_toko			=	text_arr[1];
 					if(!isNaN(id_toko)){
-						$("#pleasewait").modal('hide');
-						$("#err_alert_text").empty();
-						$("#err_alert_text").append("ID Toko benar.");
-						$("#errordialog").modal();
+						
+						$.post(
+							// URL
+							//
+							"http://demo.totalindo.net/FMCG-1.01/web-service/form-data_toko.php",
+							// Data POST
+							//
+							{
+								id_toko: id_toko
+							},
+							// When Succeeded
+							//
+							function(data){
+								$("#pleasewait").modal('hide');
+								$("#err_alert_text").empty();
+								$("#err_alert_text").append(data['message']);
+								$("#errordialog").modal();
+							}
+						);
+						
 					}else{
 						$("#pleasewait").modal('hide');
 						$("#err_alert_text").empty();
-						$("#err_alert_text").append("ID Toko salah.");
+						$("#err_alert_text").append("Terjadi kesalahan saat proses <i>scanning Barcode</i>.<br />Silakan ulangi proses <i>scan</i>.<br />Pastikan <i>barcode</i> yang anda scan adalah barcode FMCG.");
 						$("#errordialog").modal();
 					}
 				}
