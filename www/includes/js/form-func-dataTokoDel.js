@@ -35,8 +35,8 @@ function delete_dataToko(){
 				$("#button_konfirmasi_toko").attr('disabled',false);
 				$("#button_del_trx").addClass('hide');
 				
-				$("#pemilik_kelamin_p").attr("checked",false).checkboxradio("refresh");
-				$("#pemilik_kelamin_l").attr("checked",false).checkboxradio("refresh");
+				$("#pemilik_kelamin_p").attr("checked",false);
+				$("#pemilik_kelamin_l").attr("checked",false);
 			}else{
 				$("#pleasewait").modal('hide');
 				$("#err_alert_text").empty();
