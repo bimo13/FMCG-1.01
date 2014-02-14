@@ -145,7 +145,10 @@
 							$(".text-messages").addClass('text-danger');
 							$(".text-messages").append(data['message']);
 						}else{
-							window.location.href	=	"main-page.html";
+							setTimeout(function(){
+								$("#pleasewait").modal('hide');
+								window.location.href	=	"main-page.html";
+							}, 1500);
 						}
 					},
 					"json"
