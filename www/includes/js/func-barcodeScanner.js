@@ -27,57 +27,10 @@ var app = {
 					$("#err_alert_text").append("<i>Barcode</i> salah.<br />Pastikan <i>barcode</i> yang anda scan adalah <i>barcode</i> FMCG.");
 					$("#errordialog").modal();
 				}else{
-					var id_toko			=	text_arr[1];
-					if(!isNaN(id_toko)){
-						$.post(
-							// URL
-							//
-							"http://demo.totalindo.net/FMCG-1.01/web-service/form-data_toko.php",
-							// Data POST
-							//
-							{ id_toko: id_toko },
-							// When Succeeded
-							//
-							function(data){
-								if(data['status'] != 1){
-									$("#pleasewait").modal('hide');
-									$("#err_alert_text").empty();
-									$("#err_alert_text").append("Disini Error no. 1");
-									$("#errordialog").modal();
-								}else{
-									$("#pleasewait").modal('hide');
-									
-									$("#toko_nama").val(text_arr[2]);
-									$("#toko_alamat").val(text_arr[3]);
-									$("#pemilik_nama").val(text_arr[4]);
-									$("#pemilik_alamat").val(text_arr[6]);
-									$("#pemilik_telp").val(text_arr[7]);
-									$("#pemilik_mail").val(text_arr[8]);
-									
-									$("#toko_id").attr('disabled',true);
-									$("#button_scan_barcode").attr('disabled',true);
-									$("#button_konfirmasi_toko").attr('disabled',true);
-									
-									$("#trx_toko_id").val(text_arr[1]);
-									$("#trx_data_id").val(data['return_data']['data_trx_toko']);
-									$("#button_del_trx").removeClass('hide');
-									
-									if(text_arr[5] == "L"){
-										$("#pemilik_kelamin_l").attr("checked",true).checkboxradio("refresh");
-										$("#pemilik_kelamin_p").attr("checked",false).checkboxradio("refresh");
-									}else if(text_arr[5] == "P"){
-										$("#pemilik_kelamin_p").attr("checked",true).checkboxradio("refresh");
-										$("#pemilik_kelamin_l").attr("checked",false).checkboxradio("refresh");
-									}
-								}
-							}
-						);
-					}else{
-						$("#pleasewait").modal('hide');
-						$("#err_alert_text").empty();
-						$("#err_alert_text").append("Terjadi kesalahan saat proses <i>scanning Barcode</i>.<br />Silakan ulangi proses <i>scan</i>.<br />Pastikan <i>barcode</i> yang anda scan adalah barcode FMCG.");
-						$("#errordialog").modal();
-					}
+					$("#pleasewait").modal('hide');
+					$("#err_alert_text").empty();
+					$("#err_alert_text").append("<i>Barcode</i> FMCG.");
+					$("#errordialog").modal();
 				}
 				
 			}else{
