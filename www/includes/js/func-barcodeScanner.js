@@ -27,10 +27,18 @@ var app = {
 					$("#err_alert_text").append("<i>Barcode</i> salah.<br />Pastikan <i>barcode</i> yang anda scan adalah <i>barcode</i> FMCG.");
 					$("#errordialog").modal();
 				}else{
-					$("#pleasewait").modal('hide');
-					$("#err_alert_text").empty();
-					$("#err_alert_text").append("<i>Barcode</i> FMCG.");
-					$("#errordialog").modal();
+					var id_toko			=	text_arr[1];
+					if(!isNaN(id_toko)){
+						$("#pleasewait").modal('hide');
+						$("#err_alert_text").empty();
+						$("#err_alert_text").append("ID Toko benar.");
+						$("#errordialog").modal();
+					}else{
+						$("#pleasewait").modal('hide');
+						$("#err_alert_text").empty();
+						$("#err_alert_text").append("ID Toko salah.");
+						$("#errordialog").modal();
+					}
 				}
 				
 			}else{
