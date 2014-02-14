@@ -10,6 +10,8 @@ function delete_dataToko(){
 	$("#err_alert_text").append("ID Toko : "+trx_toko_id+" | ID Data : "+trx_data_id);
 	$("#errordialog").modal();
 	
+	return false;
+	
 	/*
 	$("#pleasewait").modal();
 	

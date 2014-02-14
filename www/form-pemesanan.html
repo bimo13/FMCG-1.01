@@ -60,7 +60,7 @@
             <input type="text" class="form-control" id="pemilik_telp" name="pemilik_telp" placeholder="No. Telepon Pemilik Toko" readonly />
             <input type="text" class="form-control" id="pemilik_mail" name="pemilik_mail" placeholder="Email Pemilik Toko" readonly />
             
-            <form id="form-data_trx_toko" autocomplete="off" onSubmit="delete_dataToko()">
+            <form id="form-data_trx_toko" autocomplete="off" onSubmit="return delete_dataToko()">
             	<input type="hidden" class="form-control" id="trx_toko_id" name="trx_toko_id" readonly />
                 <input type="hidden" class="form-control" id="trx_data_id" name="trx_data_id" readonly />
             	<button type="submit" id="button_del_trx" class="btn btn-default btn-block hide">Hapus/Ganti Data Toko</button>
