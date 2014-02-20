@@ -69,6 +69,35 @@
         </div>
         
         <div class="container">
+        	
+            <p class="messages bg-primary">Data Transaksi</p>
+            <form method="post" id="formdataproduk" autocomplete="off">
+            	
+                <select name="produk_nama" id="produk_nama" class="form-control" required>
+                    <option value="">- Nama Produk -</option>
+                </select>
+                
+                <p>Produsen :</p>
+                <input type="text" class="form-control" id="produk_produsen" name="produk_produsen" placeholder="Produsen" readonly />
+                <p>Harga Satuan :</p>
+                <div class="input-group">
+                    <span class="input-group-addon">Rp.</span>
+                    <input type="text" class="form-control" id="produk_harga" name="produk_harga" placeholder="Harga Satuan" readonly />
+                </div>
+                <p>Stok Tersedia :</p>
+                <input type="text" class="form-control" id="produk_stok" name="produk_stok" placeholder="Stok Tersedia" readonly />
+                <input type="text" class="form-control" id="produk_qty" name="produk_qty" placeholder="Jumlah Pemesanan" />
+                <p>Total Harga Pesanan :</p>
+                <div class="input-group">
+                    <span class="input-group-addon">Rp.</span>
+                    <input type="text" class="form-control" id="produk_total_pesanan" name="produk_total_pesanan" placeholder="Total Harga Pesanan" readonly />
+                </div>
+                
+            </form>
+            
+        </div>
+        
+        <div class="container">
         	<div class="link-button">
             	<a href="main-page.html" class="btn btn-default btn-lg btn-block">Main Page <span class="glyphicon glyphicon-chevron-right"></span></a>
                 <button type="button" class="btn btn-default btn-lg btn-block" onClick="logout();">Sign Out <span class="glyphicon glyphicon-chevron-right"></span></button>
@@ -158,6 +187,7 @@
         
         <script src="includes/js/form-func-dataTokoAdd.js"></script>
         <script src="includes/js/form-func-dataTokoDel.js"></script>
+        <script src="includes/js/form-func-get_produk_stok.js"></script>
         
     </body>
 	
