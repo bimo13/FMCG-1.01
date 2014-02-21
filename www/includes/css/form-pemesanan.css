@@ -13,6 +13,10 @@ input, button, select, .input-group {
 	margin: 3px 0;
 }
 
+.container {
+	margin-bottom				: 10px		!important;
+}
+
 .input-group > input {
 	margin						: 0			!important;
 }

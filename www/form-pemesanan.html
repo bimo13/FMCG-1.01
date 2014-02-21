@@ -73,25 +73,38 @@
             <p class="messages bg-primary">Data Transaksi</p>
             <form method="post" id="formdataproduk" autocomplete="off">
             	
-                <select name="produk_nama" id="produk_nama" class="form-control" required>
-                    <option value="">- Nama Produk -</option>
-                </select>
+                <div class="form-group">
+                    <select name="produk_nama" id="produk_nama" class="form-control" onChange="get_detail_produk()" required>
+                        <option value="">- Nama Produk -</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <p>Produsen :</p>
+                    <input type="text" class="form-control" id="produk_produsen" name="produk_produsen" placeholder="Produsen" readonly />
+                </div>
+                <div class="form-group">
+                    <p>Harga Satuan :</p>
+                    <div class="input-group">
+                        <span class="input-group-addon">Rp.</span>
+                        <input type="text" class="form-control" id="produk_harga" name="produk_harga" placeholder="Harga Satuan" readonly />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p>Stok Tersedia :</p>
+                    <input type="text" class="form-control" id="produk_stok" name="produk_stok" placeholder="Stok Tersedia" readonly />
+                </div>
+                <div class="form-group">
+                	<input type="text" class="form-control" id="produk_qty" name="produk_qty" placeholder="Jumlah Pemesanan" required disabled />
+                </div>
+                <div class="form-group">
+                    <p>Total Harga Pesanan :</p>
+                    <div class="input-group">
+                        <span class="input-group-addon">Rp.</span>
+                        <input type="text" class="form-control" id="produk_total_pesanan" name="produk_total_pesanan" placeholder="Total Harga Pesanan" readonly />
+                    </div>
+                </div>
                 
-                <p>Produsen :</p>
-                <input type="text" class="form-control" id="produk_produsen" name="produk_produsen" placeholder="Produsen" readonly />
-                <p>Harga Satuan :</p>
-                <div class="input-group">
-                    <span class="input-group-addon">Rp.</span>
-                    <input type="text" class="form-control" id="produk_harga" name="produk_harga" placeholder="Harga Satuan" readonly />
-                </div>
-                <p>Stok Tersedia :</p>
-                <input type="text" class="form-control" id="produk_stok" name="produk_stok" placeholder="Stok Tersedia" readonly />
-                <input type="text" class="form-control" id="produk_qty" name="produk_qty" placeholder="Jumlah Pemesanan" />
-                <p>Total Harga Pesanan :</p>
-                <div class="input-group">
-                    <span class="input-group-addon">Rp.</span>
-                    <input type="text" class="form-control" id="produk_total_pesanan" name="produk_total_pesanan" placeholder="Total Harga Pesanan" readonly />
-                </div>
+                <button type="submit" class="btn btn-default btn-block" id="button_tambah_data">Tambahkan Data Transaksi</button>
                 
             </form>
             
@@ -188,6 +201,20 @@
         <script src="includes/js/form-func-dataTokoAdd.js"></script>
         <script src="includes/js/form-func-dataTokoDel.js"></script>
         <script src="includes/js/form-func-get_produk_stok.js"></script>
+        <script src="includes/js/form-func-validasi_FormProduk.js"></script>
+        <script src="includes/js/form-func-get_detailProduk.js"></script>
+        <script>
+        	$(document).ready(function(){
+				$('#produk_qty').keyup(function(){
+					var thisVal = parseInt($(this).val(), 10);
+					if (!isNaN(thisVal)) {
+						thisVal = Math.max(0, Math.min($("#produk_stok").val(), thisVal));
+						$(this).val(thisVal);
+					}
+					$('#produk_total_pesanan').val($('#produk_qty').val() * $('#produk_harga').val());
+				});   
+			});
+        </script>
         
     </body>
 	
