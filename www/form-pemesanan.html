@@ -60,11 +60,9 @@
             <input type="text" class="form-control" id="pemilik_telp" name="pemilik_telp" placeholder="No. Telepon Pemilik Toko" readonly />
             <input type="text" class="form-control" id="pemilik_mail" name="pemilik_mail" placeholder="Email Pemilik Toko" readonly />
             
-            <form id="form-data_trx_toko" autocomplete="off" onSubmit="return delete_dataToko()">
-            	<input type="hidden" class="form-control" id="trx_toko_id" name="trx_toko_id" readonly />
-                <input type="hidden" class="form-control" id="trx_data_id" name="trx_data_id" readonly />
-            	<button type="submit" id="button_del_trx" class="btn btn-default btn-block hide">Hapus/Ganti Data Toko</button>
-            </form>
+            <input type="hidden" class="form-control" id="trx_toko_id" name="trx_toko_id" readonly />
+            <input type="hidden" class="form-control" id="trx_data_id" name="trx_data_id" readonly />
+            <a data-toggle="modal" href="#questdialog" class="btn btn-default btn-block hide" id="button_del_trx">Hapus/Ganti Data Toko</a>
             
         </div>
         
@@ -97,6 +95,16 @@
                 	<input type="text" class="form-control" id="produk_qty" name="produk_qty" placeholder="Jumlah Pemesanan" required disabled />
                 </div>
                 <div class="form-group">
+                	<input type="text" class="form-control" id="produk_reject" name="produk_reject" placeholder="Jumlah Reject" required disabled />
+                </div>
+                <div class="form-group">
+                    <p>Diskon :</p>
+                    <div class="input-group">
+                        <span class="input-group-addon">Rp.</span>
+                        <input type="text" class="form-control" id="produk_diskon" name="produk_diskon" placeholder="Diskon" required disabled />
+                    </div>
+                </div>
+                <div class="form-group">
                     <p>Total Harga Pesanan :</p>
                     <div class="input-group">
                         <span class="input-group-addon">Rp.</span>
@@ -104,9 +112,30 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="btn btn-default btn-block" id="button_tambah_data">Tambahkan Data Transaksi</button>
+                <button type="submit" class="btn btn-default btn-block" id="button_tambah_data" disabled>Tambahkan Data Transaksi</button>
                 
             </form>
+            
+        </div>
+        
+        <div class="container">
+        	
+            <input type="hidden" name="tot_trx_produk" id="tot_trx_produk" value="0" />
+            
+            <p class="messages bg-primary">Rekap Pemesanan</p>
+            <div class="table-responsive">
+                <table class="table" id="tabel_rekap">
+                    <tr>
+                        <th>No.</th>
+                        <th>Nama Produk</th>
+                        <th>Jumlah Pesanan</th>
+                        <th>Sub Total</th>
+                        <th>Menu</th>
+                    </tr>
+                </table>
+            </div>
+            
+            <button class="btn btn-default btn-block hide" id="button_add_trx" onClick="save_dataTransaksi()">Simpan Data Pesanan</button>
             
         </div>
         
@@ -182,6 +211,21 @@
             </div>
         </div>
         
+        <!-- "Question" Dialog -->
+        <div class="modal fade bs-modal-sm" id="questdialog" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myQuestModal" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">
+                    	<h4 class="modal-title" id="myQuestModal">Anda yakin ingin menghapus data ini ?</h4>
+                    </div>
+                    <div class="modal-footer">
+                    	<button type="button" class="btn btn-warning" id="buttonquest"><span class="glyphicon glyphicon-ok"></span> Ya</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Tidak</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <script src="cordova.js" type="text/javascript"></script>
         <script src="barcodescanner.js" type="text/javascript"></script>
         <script src="includes/js/func-barcodeScanner.js" type="text/javascript"></script>
@@ -203,17 +247,43 @@
         <script src="includes/js/form-func-get_produk_stok.js"></script>
         <script src="includes/js/form-func-validasi_FormProduk.js"></script>
         <script src="includes/js/form-func-get_detailProduk.js"></script>
+        <script src="includes/js/form-func-totalPesanan.js"></script>
+        <script src="includes/js/form-func-dataTransaksiAdd.js"></script>
+        <script src="includes/js/form-func-dataTransaksiDel.js"></script>
+        <script src="includes/js/form-func-buttonTransaksi.js"></script>
+        
         <script>
-        	$(document).ready(function(){
-				$('#produk_qty').keyup(function(){
-					var thisVal = parseInt($(this).val(), 10);
-					if (!isNaN(thisVal)) {
-						thisVal = Math.max(0, Math.min($("#produk_stok").val(), thisVal));
-						$(this).val(thisVal);
-					}
-					$('#produk_total_pesanan').val($('#produk_qty').val() * $('#produk_harga').val());
-				});   
-			});
+			function save_dataTransaksi(){
+				$("#pleasewait").modal();
+				var id_trx	=	$("#trx_data_id").val();
+				
+				$.post(
+					// URL
+					//
+					"http://demo.totalindo.net/FMCG-1.01/web-service/save-dataTransaksi.php",
+					// Data POST
+					//
+					{
+						id_trx: id_trx
+					},
+					// When Succeeded
+					//
+					function(data){
+						if(data['status'] != 1){
+							$("#pleasewait").modal('hide');
+							$("#err_alert_text").empty();
+							$("#err_alert_text").append(data['message']);
+							$("#errordialog").modal();
+						}else{
+							setTimeout(function(){
+								$("#pleasewait").modal('hide');
+								window.location.href	=	"main-page.html";
+							}, 1500);
+						}
+					},
+					"json"
+				);
+			}
         </script>
         
     </body>

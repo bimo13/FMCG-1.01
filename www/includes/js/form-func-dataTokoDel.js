@@ -31,6 +31,7 @@ function delete_dataToko(){
 				$("#toko_id").attr('disabled',false);
 				$("#button_scan_barcode").attr('disabled',false);
 				$("#button_konfirmasi_toko").attr('disabled',false);
+				$("#button_tambah_data").attr('disabled',true);
 				$("#pemilik_kelamin_p").attr("checked",false);
 				$("#pemilik_kelamin_l").attr("checked",false);
 				$("#button_del_trx").addClass('hide');

@@ -1,4 +1,18 @@
 $('#formdataproduk').validate({
+	rules: {
+		produk_qty: {
+			required: true,
+			digits: true
+		},
+		produk_reject: {
+			required: true,
+			digits: true
+		},
+		produk_diskon: {
+			required: true,
+			digits: true
+		}
+	},
 	highlight: function(element) {
 		$(element).closest('.form-group').addClass('has-error');
 	},
@@ -15,6 +29,6 @@ $('#formdataproduk').validate({
 		}
 	},
 	submitHandler: function(form){
-		submitLogin();
+		submitTransaksi();
 	}
 });

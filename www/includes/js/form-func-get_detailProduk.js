@@ -27,6 +27,8 @@ function get_detail_produk(){
 					$("#produk_harga").val(data['return_data']['harga_satuan']);
 					$("#produk_stok").val(data['return_data']['stok_pegawai']);
 					$("#produk_qty").attr('disabled',false);
+					$("#produk_reject").attr('disabled',false);
+					$("#produk_diskon").attr('disabled',false);
 				}
 			},
 			"json"
@@ -37,6 +39,8 @@ function get_detail_produk(){
 		$("#produk_harga").val("");
 		$("#produk_stok").val("");
 		$("#produk_qty").attr('disabled',true);
+		$("#produk_reject").attr('disabled',true);
+		$("#produk_diskon").attr('disabled',true);
 	}
 	
 }

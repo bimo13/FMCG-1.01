@@ -1,7 +1,8 @@
 $('#form-data_toko').validate({
 	rules: {
 		toko_id: {
-			required: true
+			required: true,
+			digits: true
 		}
 	},
 	highlight: function(element) {
@@ -58,17 +59,18 @@ function submit_dataToko(){
 					$("#toko_id").attr('disabled',true);
 					$("#button_scan_barcode").attr('disabled',true);
 					$("#button_konfirmasi_toko").attr('disabled',true);
+					$("#button_tambah_data").attr('disabled',false);
 					
 					$("#trx_toko_id").val(data['return_data']['id_toko']);
 					$("#trx_data_id").val(data['return_data']['data_trx_toko']);
 					$("#button_del_trx").removeClass('hide');
 					
 					if(data['return_data']['jenis_kelamin'] == "L"){
-						$("#pemilik_kelamin_l").attr("checked",true).checkboxradio("refresh");
-						$("#pemilik_kelamin_p").attr("checked",false).checkboxradio("refresh");
+						$("#pemilik_kelamin_l").attr("checked",true);
+						$("#pemilik_kelamin_p").attr("checked",false);
 					}else if(data['return_data']['jenis_kelamin'] == "P"){
-						$("#pemilik_kelamin_p").attr("checked",true).checkboxradio("refresh");
-						$("#pemilik_kelamin_l").attr("checked",false).checkboxradio("refresh");
+						$("#pemilik_kelamin_p").attr("checked",true);
+						$("#pemilik_kelamin_l").attr("checked",false);
 					}
 				}
 			},
