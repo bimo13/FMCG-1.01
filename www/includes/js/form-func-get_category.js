@@ -11,9 +11,30 @@ function get_kategori_produk(){
 			
 			if(data['status'] != 1){
 				
-				$("#log-message").empty();
-				$("#log-message").append(data['message']);
-				$("#popuptrig").click();
+				$("#myDialogs").empty();
+				$("#myDialogs").html("<div class=\"text-danger\">Terjadi Kesalahan !</div>");
+				
+				$("#myDialogsText").removeClass("alert-success alert-info alert-warning alert-danger");
+				$("#myDialogsText").addClass("alert-danger");
+				$("#myDialogsText").html(data['message']);
+				
+				$("#button-DialogYes").removeClass("btn-info btn-danger btn-warning btn-primary hide");
+				$("#button-DialogNo").removeClass("hide");
+				$("#button-DialogClose").removeClass("hide");
+				
+				$("#button-DialogYes").unbind();
+				$("#button-DialogNo").unbind();
+				$("#button-DialogClose").unbind();
+				
+				$("#button-DialogClose").bind("click", function(){
+					$("#FMCGDialogs").modal("hide");
+				});
+				
+				$("#button-DialogYes").addClass("hide");
+				$("#button-DialogNo").addClass("hide");
+				
+				$("#pleasewait").modal('hide');
+				$("#FMCGDialogs").modal();
 				
 			}else{
 				

@@ -11,10 +11,8 @@ function session_check(){
 				$("#myDialogs").html("<div class=\"text-danger\">Terjadi Kesalahan !</div>");
 				
 				$("#myDialogsText").removeClass("alert-success alert-info alert-warning alert-danger");
-				$("#myDialogsText").addClass("hide");
 				$("#myDialogsText").addClass("alert-danger");
 				$("#myDialogsText").html(data['message']);
-				$("#myDialogsText").removeClass("hide");
 				
 				$("#button-DialogYes").removeClass("btn-info btn-danger btn-warning btn-primary hide");
 				$("#button-DialogNo").removeClass("hide");

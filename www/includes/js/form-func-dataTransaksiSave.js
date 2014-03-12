@@ -15,15 +15,63 @@ function save_dataTransaksi(){
 		//
 		function(data){
 			if(data['status'] != 1){
+				$("#myDialogs").empty();
+				$("#myDialogs").html("<div class=\"text-danger\">Terjadi Kesalahan !</div>");
+				
+				$("#myDialogsText").removeClass("alert-success alert-info alert-warning alert-danger");
+				$("#myDialogsText").addClass("alert-danger");
+				$("#myDialogsText").html(data['message']);
+				
+				$("#button-DialogYes").removeClass("btn-info btn-danger btn-warning btn-primary hide");
+				$("#button-DialogNo").removeClass("hide");
+				$("#button-DialogClose").removeClass("hide");
+				
+				$("#button-DialogYes").unbind();
+				$("#button-DialogNo").unbind();
+				$("#button-DialogClose").unbind();
+				
+				$("#button-DialogClose").bind("click", function(){
+					$("#FMCGDialogs").modal("hide");
+				});
+				
+				$("#button-DialogYes").addClass("hide");
+				$("#button-DialogNo").addClass("hide");
+				
 				$("#pleasewait").modal('hide');
-				$("#err_alert_text").empty();
-				$("#err_alert_text").append(data['message']);
-				$("#errordialog").modal();
+				$("#FMCGDialogs").modal();
+				
 			}else{
-				setTimeout(function(){
-					$("#pleasewait").modal('hide');
-					window.location.href	=	"main-page.html";
-				}, 1500);
+				
+				$("#myDialogs").empty();
+				$("#myDialogs").html("<div class=\"text-success\">Selesai</div>");
+				
+				$("#myDialogsText").removeClass("alert-success alert-info alert-warning alert-danger");
+				$("#myDialogsText").addClass("alert-success");
+				$("#myDialogsText").html(data['message']);
+				
+				$("#button-DialogYes").removeClass("btn-info btn-danger btn-warning btn-primary hide");
+				$("#button-DialogNo").removeClass("hide");
+				$("#button-DialogClose").removeClass("hide");
+				
+				$("#button-DialogYes").unbind();
+				$("#button-DialogNo").unbind();
+				$("#button-DialogClose").unbind();
+				
+				$("#button-DialogClose").bind("click", function(){
+					$("#FMCGDialogs").modal("hide");
+					setTimeout(
+						function(){
+							window.location.href="main-page.html";
+						},500
+					);
+				});
+				
+				$("#button-DialogYes").addClass("hide");
+				$("#button-DialogNo").addClass("hide");
+				
+				$("#pleasewait").modal('hide');
+				$("#FMCGDialogs").modal();
+				
 			}
 		},
 		"json"

@@ -38,10 +38,30 @@ function delete_dataToko(){
 				
 				$("#pleasewait").modal('hide');
 			}else{
+				$("#myDialogs").empty();
+				$("#myDialogs").html("<div class=\"text-danger\">Terjadi Kesalahan !</div>");
+				
+				$("#myDialogsText").removeClass("alert-success alert-info alert-warning alert-danger");
+				$("#myDialogsText").addClass("alert-danger");
+				$("#myDialogsText").html(data['message']);
+				
+				$("#button-DialogYes").removeClass("btn-info btn-danger btn-warning btn-primary hide");
+				$("#button-DialogNo").removeClass("hide");
+				$("#button-DialogClose").removeClass("hide");
+				
+				$("#button-DialogYes").unbind();
+				$("#button-DialogNo").unbind();
+				$("#button-DialogClose").unbind();
+				
+				$("#button-DialogClose").bind("click", function(){
+					$("#FMCGDialogs").modal("hide");
+				});
+				
+				$("#button-DialogYes").addClass("hide");
+				$("#button-DialogNo").addClass("hide");
+				
 				$("#pleasewait").modal('hide');
-				$("#err_alert_text").empty();
-				$("#err_alert_text").append(data['message']);
-				$("#errordialog").modal();
+				$("#FMCGDialogs").modal();
 			}
 		},
 		"json"
