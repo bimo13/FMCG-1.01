@@ -57,6 +57,7 @@ var app = {
 									$("#toko_id").attr('disabled',true);
 									$("#button_scan_barcode").attr('disabled',true);
 									$("#button_konfirmasi_toko").attr('disabled',true);
+									$("#button_tambah_data").attr('disabled',false);
 									
 									$("#trx_toko_id").val(text_arr[1]);
 									$("#trx_data_id").val(data['return_data']['data_trx_toko']);

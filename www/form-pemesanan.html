@@ -39,11 +39,11 @@
             	<div class="form-group">
                 	<input type="text" class="form-control" id="toko_id" name="toko_id" placeholder="ID Toko" required />
                 </div>
-                <button type="submit" class="btn btn-default btn-block" id="button_konfirmasi_toko">Konfirmasi Data Toko</button>
+                <button type="submit" class="btn btn-default btn-success" id="button_konfirmasi_toko">Konfirmasi Data Toko</button>
             </form>
         	
-            <p class="text-center">atau</p>
-            <button type="button" class="btn btn-default btn-block" id="button_scan_barcode">Scan Barcode</button>
+            <p>atau</p>
+            <button type="button" class="btn btn-default btn-success" id="button_scan_barcode">Scan Barcode</button>
             
             <input type="text" class="form-control" id="toko_nama" name="toko_nama" placeholder="Nama Toko" readonly />
             <textarea class="form-control" id="toko_alamat" name="toko_alamat" rows="3" placeholder="Alamat Toko" readonly></textarea>
@@ -62,7 +62,7 @@
             
             <input type="hidden" class="form-control" id="trx_toko_id" name="trx_toko_id" readonly />
             <input type="hidden" class="form-control" id="trx_data_id" name="trx_data_id" readonly />
-            <a data-toggle="modal" href="#questdialog" class="btn btn-default btn-block hide" id="button_del_trx">Hapus/Ganti Data Toko</a>
+            <a data-toggle="modal" href="#questdialog" class="btn btn-default btn-warning hide" id="button_del_trx">Hapus/Ganti Data Toko</a>
             
         </div>
         
@@ -112,7 +112,7 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="btn btn-default btn-block" id="button_tambah_data" disabled>Tambahkan Data Transaksi</button>
+                <button type="submit" class="btn btn-default btn-success" id="button_tambah_data" disabled>Tambahkan Data Transaksi</button>
                 
             </form>
             
@@ -135,7 +135,7 @@
                 </table>
             </div>
             
-            <button class="btn btn-default btn-block hide" id="button_add_trx" onClick="save_dataTransaksi()">Simpan Data Pesanan</button>
+            <button class="btn btn-default btn-success hide" id="button_add_trx" onClick="save_dataTransaksi()">Simpan Data Pesanan</button>
             
         </div>
         
@@ -147,6 +147,23 @@
             <p class="messages err_body_bg">
                 <span class="text-messages err_body_text"></span>
             </p>
+        </div>
+        
+        <!-- Dialogs -->
+        <div class="modal fade" id="FMCGDialogs" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myDialogs" aria-hidden="true">
+        	<div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body" id="DialogBody">
+                    	<h4 class="modal-title" id="myDialogs">
+                        	
+                        </h4>
+                    </div>
+                    <div class="modal-footer" id="DialogFooter">
+                    	<button type="button" class="btn btn-default" id="button-DialogYes"><span class="glyphicon glyphicon-ok"></span> Ya</button>
+                        <button type="button" class="btn btn-default" id="button-DialogNo"><span class="glyphicon glyphicon-remove"></span> Tidak</button>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!-- "Please Wait" Dialog -->
@@ -251,40 +268,7 @@
         <script src="includes/js/form-func-dataTransaksiAdd.js"></script>
         <script src="includes/js/form-func-dataTransaksiDel.js"></script>
         <script src="includes/js/form-func-buttonTransaksi.js"></script>
-        
-        <script>
-			function save_dataTransaksi(){
-				$("#pleasewait").modal();
-				var id_trx	=	$("#trx_data_id").val();
-				
-				$.post(
-					// URL
-					//
-					"http://demo.totalindo.net/FMCG-1.01/web-service/save-dataTransaksi.php",
-					// Data POST
-					//
-					{
-						id_trx: id_trx
-					},
-					// When Succeeded
-					//
-					function(data){
-						if(data['status'] != 1){
-							$("#pleasewait").modal('hide');
-							$("#err_alert_text").empty();
-							$("#err_alert_text").append(data['message']);
-							$("#errordialog").modal();
-						}else{
-							setTimeout(function(){
-								$("#pleasewait").modal('hide');
-								window.location.href	=	"main-page.html";
-							}, 1500);
-						}
-					},
-					"json"
-				);
-			}
-        </script>
+        <script src="includes/js/form-func-dataTransaksiSave.js"></script>
         
     </body>
 	
