@@ -16,6 +16,7 @@ function ShowExitDialog(){
 		$("#FMCGDialogs").modal("hide");
 	});
 	
+	$("#MyDialogs").html("Anda yakin ingin keluar dari aplikasi ?");
 	$("#FMCGDialogs").modal();
 }
 
