@@ -6,7 +6,13 @@ document.addEventListener('deviceready', function(){
 //Dialog popup
 function ShowExitDialog(){
 	$("#myDialogs").empty();
-	$("#myDialogs").html("Anda yakin ingin keluar dari aplikasi ?");
+	$("#myDialogs").html("<div class=\"text-danger\">Alert !</div>");
+	
+	$("#myDialogsText").removeClass("alert-success alert-info alert-warning alert-danger");
+	$("#myDialogsText").addClass("hide");
+	$("#myDialogsText").addClass("alert-warning");
+	$("#myDialogsText").html("Anda yakin ingin keluar dari aplikasi ini ?");
+	$("#myDialogsText").removeClass("hide");
 	
 	$("#button-DialogYes").removeClass("btn-info btn-danger btn-warning btn-primary hide");
 	$("#button-DialogNo").removeClass("hide");

@@ -7,8 +7,6 @@ function session_check(){
 		//
 		function(data){
 			if(data['status'] != 1){
-				
-				
 				$("#myDialogs").empty();
 				$("#myDialogs").html("<div class=\"text-danger\">Terjadi Kesalahan !</div>");
 				
@@ -39,21 +37,6 @@ function session_check(){
 				$("#button-DialogNo").addClass("hide");
 				
 				$("#FMCGDialogs").modal();
-				
-				
-				/*
-				$("#sessiondialog").modal();
-				$("#mySessionModal").addClass('text-danger');
-				
-				$(".err_session_bg").addClass('bg-danger');
-				$(".err_session_text").empty();
-				$(".err_session_text").addClass('text-danger');
-				$(".err_session_text").append(data['message']);
-				$('#sessiondialog').on('hidden.bs.modal',function(e){
-					window.location.href="index.html";
-				});
-				*/
-				
 			}
 		},
 		"json"
