@@ -8,13 +8,13 @@ function ShowExitDialog(){
 	$("#myDialogs").empty();
 	$("#myDialogs").html("Anda yakin ingin keluar dari aplikasi ?");
 	
-	$("#button-DialogYes").removeClass("btn-info");
-	$("#button-DialogYes").removeClass("btn-danger");
-	$("#button-DialogYes").removeClass("btn-warning");
-	$("#button-DialogYes").removeClass("btn-primary");
+	$("#button-DialogYes").removeClass("btn-info btn-danger btn-warning btn-primary hide");
+	$("#button-DialogNo").removeClass("hide");
+	$("#button-DialogClose").removeClass("hide");
 	
 	$("#button-DialogYes").unbind();
 	$("#button-DialogNo").unbind();
+	$("#button-DialogClose").unbind();
 	
 	$("#button-DialogYes").addClass("btn-warning");
 	$("#button-DialogYes").bind("click", function(){
@@ -25,19 +25,7 @@ function ShowExitDialog(){
 		$("#FMCGDialogs").modal("hide");
 	});
 	
+	$("#button-DialogClose").addClass("hide");
+	
 	$("#FMCGDialogs").modal();
 }
-
-/*
-function ShowExitDialog(){
-	$("#exitdialog").modal();
-}
-*/
-
-//Exit function
-
-/*
-function closeApp(){
-	navigator.app.exitApp();
-}
-*/

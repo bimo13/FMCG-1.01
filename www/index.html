@@ -13,6 +13,7 @@
         
         <!-- Custom styles for index.html -->
     	<link href="includes/css/index.css" rel="stylesheet">
+        <link href="includes/css/dialogs.css" rel="stylesheet">
         
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -52,14 +53,16 @@
         <div class="modal fade" id="FMCGDialogs" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myDialogs" aria-hidden="true">
         	<div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-body" id="DialogBody">
-                    	<h4 class="modal-title" id="myDialogs">
-                        	
-                        </h4>
+                	<div class="modal-header">
+                    	<h4 class="modal-title" id="myDialogs"></h4>
                     </div>
-                    <div class="modal-footer" id="DialogFooter">
+                    <div class="modal-body">
+                        <p class="alert" id="myDialogsText"></p>
+                    </div>
+                    <div class="modal-footer" id="myDialogsFoot">
                     	<button type="button" class="btn btn-default" id="button-DialogYes"><span class="glyphicon glyphicon-ok"></span> Ya</button>
                         <button type="button" class="btn btn-default" id="button-DialogNo"><span class="glyphicon glyphicon-remove"></span> Tidak</button>
+                        <button type="button" class="btn btn-default" id="button-DialogClose"><span class="glyphicon glyphicon-remove"></span> Tutup</button>
                     </div>
                 </div>
             </div>
@@ -74,20 +77,6 @@
                     	<div class="progress progress-striped active">
                             <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- "Exit" Dialog -->
-        <div class="modal fade bs-modal-sm" id="exitdialog" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myExitModal" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-body">
-                    	<h4 class="modal-title" id="myExitModal">Anda yakin ingin keluar ?</h4>
-                    </div>
-                    <div class="modal-footer">
-                    	<button type="button" class="btn btn-default" onClick="closeApp();"><span class="glyphicon glyphicon-ok"></span> Ya</button><button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Tidak</button>
                     </div>
                 </div>
             </div>
