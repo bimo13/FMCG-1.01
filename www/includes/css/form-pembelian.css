@@ -40,6 +40,15 @@ textarea {
 	margin						: 0			!important;
 }
 
+p.messages {
+	margin						: 10px 0 0	!important;
+	padding						: 15px		!important;
+}
+
+p.text-center {
+	padding						: 5px 0 0	!important;
+}
+
 .glyphicon-chevron-right{
 	float						: right;
 	margin-right				: 10px;

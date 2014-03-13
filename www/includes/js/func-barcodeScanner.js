@@ -22,10 +22,36 @@ var app = {
 				var text_arr			=	text_res.split("|");
 				
 				if(text_arr[0] != "TOTALIT-FMCG"){
+					$("#myDialogs").empty();
+					$("#myDialogs").html("<div class=\"text-danger\">Terjadi Kesalahan !</div>");
+					
+					$("#myDialogsText").removeClass("alert-success alert-info alert-warning alert-danger");
+					$("#myDialogsText").addClass("alert-danger");
+					$("#myDialogsText").html("<i>Barcode</i> salah.<br />Pastikan <i>barcode</i> yang anda scan adalah <i>barcode</i> FMCG.");
+					
+					$("#button-DialogYes").removeClass("btn-info btn-danger btn-warning btn-primary hide");
+					$("#button-DialogNo").removeClass("hide");
+					$("#button-DialogClose").removeClass("hide");
+					
+					$("#button-DialogYes").unbind();
+					$("#button-DialogNo").unbind();
+					$("#button-DialogClose").unbind();
+					
+					$("#button-DialogClose").bind("click", function(){
+						$("#FMCGDialogs").modal("hide");
+					});
+					
+					$("#button-DialogYes").addClass("hide");
+					$("#button-DialogNo").addClass("hide");
+					
 					$("#pleasewait").modal('hide');
+					$("#FMCGDialogs").modal();
+					
+					/*
 					$("#err_alert_text").empty();
 					$("#err_alert_text").append("<i>Barcode</i> salah.<br />Pastikan <i>barcode</i> yang anda scan adalah <i>barcode</i> FMCG.");
 					$("#errordialog").modal();
+					*/
 				}else{
 					var id_toko			=	text_arr[1];
 					if(!isNaN(id_toko)){
@@ -40,10 +66,36 @@ var app = {
 							//
 							function(data){
 								if(data['status'] != 1){
+									$("#myDialogs").empty();
+									$("#myDialogs").html("<div class=\"text-danger\">Terjadi Kesalahan !</div>");
+									
+									$("#myDialogsText").removeClass("alert-success alert-info alert-warning alert-danger");
+									$("#myDialogsText").addClass("alert-danger");
+									$("#myDialogsText").html(data['message']);
+									
+									$("#button-DialogYes").removeClass("btn-info btn-danger btn-warning btn-primary hide");
+									$("#button-DialogNo").removeClass("hide");
+									$("#button-DialogClose").removeClass("hide");
+									
+									$("#button-DialogYes").unbind();
+									$("#button-DialogNo").unbind();
+									$("#button-DialogClose").unbind();
+									
+									$("#button-DialogClose").bind("click", function(){
+										$("#FMCGDialogs").modal("hide");
+									});
+									
+									$("#button-DialogYes").addClass("hide");
+									$("#button-DialogNo").addClass("hide");
+									
 									$("#pleasewait").modal('hide');
+									$("#FMCGDialogs").modal();
+									
+									/*
 									$("#err_alert_text").empty();
 									$("#err_alert_text").append(data['message']);
 									$("#errordialog").modal();
+									*/
 								}else{
 									$("#pleasewait").modal('hide');
 									
@@ -75,17 +127,70 @@ var app = {
 							"json"
 						);
 					}else{
+						$("#myDialogs").empty();
+						$("#myDialogs").html("<div class=\"text-danger\">Terjadi Kesalahan !</div>");
+						
+						$("#myDialogsText").removeClass("alert-success alert-info alert-warning alert-danger");
+						$("#myDialogsText").addClass("alert-danger");
+						$("#myDialogsText").html("Terjadi kesalahan saat proses <i>scanning Barcode</i>.<br />Silakan ulangi proses <i>scan</i>.<br />Pastikan <i>barcode</i> yang anda scan adalah barcode FMCG.");
+						
+						$("#button-DialogYes").removeClass("btn-info btn-danger btn-warning btn-primary hide");
+						$("#button-DialogNo").removeClass("hide");
+						$("#button-DialogClose").removeClass("hide");
+						
+						$("#button-DialogYes").unbind();
+						$("#button-DialogNo").unbind();
+						$("#button-DialogClose").unbind();
+						
+						$("#button-DialogClose").bind("click", function(){
+							$("#FMCGDialogs").modal("hide");
+						});
+						
+						$("#button-DialogYes").addClass("hide");
+						$("#button-DialogNo").addClass("hide");
+						
 						$("#pleasewait").modal('hide');
+						$("#FMCGDialogs").modal();
+						
+						/*
 						$("#err_alert_text").empty();
 						$("#err_alert_text").append("Terjadi kesalahan saat proses <i>scanning Barcode</i>.<br />Silakan ulangi proses <i>scan</i>.<br />Pastikan <i>barcode</i> yang anda scan adalah barcode FMCG.");
 						$("#errordialog").modal();
+						*/
 					}
 				}
 				
 			}else{
+				$("#myDialogs").empty();
+				$("#myDialogs").html("<div class=\"text-danger\">Terjadi Kesalahan !</div>");
+				
+				$("#myDialogsText").removeClass("alert-success alert-info alert-warning alert-danger");
+				$("#myDialogsText").addClass("alert-danger");
+				$("#myDialogsText").html("<i>Barcode Scan</i> dibatalkan.");
+				
+				$("#button-DialogYes").removeClass("btn-info btn-danger btn-warning btn-primary hide");
+				$("#button-DialogNo").removeClass("hide");
+				$("#button-DialogClose").removeClass("hide");
+				
+				$("#button-DialogYes").unbind();
+				$("#button-DialogNo").unbind();
+				$("#button-DialogClose").unbind();
+				
+				$("#button-DialogClose").bind("click", function(){
+					$("#FMCGDialogs").modal("hide");
+				});
+				
+				$("#button-DialogYes").addClass("hide");
+				$("#button-DialogNo").addClass("hide");
+				
+				$("#pleasewait").modal('hide');
+				$("#FMCGDialogs").modal();
+				
+				/*
 				$("#err_alert_text").empty();
 				$("#err_alert_text").append("<i>Barcode Scan</i> dibatalkan.");
 				$("#errordialog").modal();
+				*/
 			}
 			
 			console.log(
@@ -96,9 +201,36 @@ var app = {
 			);
 			console.log(result);
 		}, function(error){
+			$("#myDialogs").empty();
+			$("#myDialogs").html("<div class=\"text-danger\">Terjadi Kesalahan !</div>");
+			
+			$("#myDialogsText").removeClass("alert-success alert-info alert-warning alert-danger");
+			$("#myDialogsText").addClass("alert-danger");
+			$("#myDialogsText").html("Scanning failed: ", error);
+			
+			$("#button-DialogYes").removeClass("btn-info btn-danger btn-warning btn-primary hide");
+			$("#button-DialogNo").removeClass("hide");
+			$("#button-DialogClose").removeClass("hide");
+			
+			$("#button-DialogYes").unbind();
+			$("#button-DialogNo").unbind();
+			$("#button-DialogClose").unbind();
+			
+			$("#button-DialogClose").bind("click", function(){
+				$("#FMCGDialogs").modal("hide");
+			});
+			
+			$("#button-DialogYes").addClass("hide");
+			$("#button-DialogNo").addClass("hide");
+			
+			$("#pleasewait").modal('hide');
+			$("#FMCGDialogs").modal();
+			
+			/*
 			$("#err_alert_text").empty();
 			$("#err_alert_text").append("Scanning failed: ", error);
 			$("#errordialog").modal();
+			*/
 			console.log("Scanning failed: ", error);
 		});
 	}

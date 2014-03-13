@@ -10,7 +10,8 @@ body {
 	margin						: 0 auto;
 }
 
-.link-button button{
+.link-button button,
+.link-button a{
 	margin						: 0			!important;
 }
 
