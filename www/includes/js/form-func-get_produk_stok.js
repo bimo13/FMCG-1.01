@@ -4,7 +4,7 @@ function get_stok_produk(){
 	$.post(
 		// URL
 		//
-		"http://demo.totalindo.net/FMCG-1.01/web-service/form-get-stok_produk.php",
+		"http://fmcg.totalit.co.id/bimo/web-service/form-get-stok_produk.php",
 		// When Succeeded
 		//
 		function(data){

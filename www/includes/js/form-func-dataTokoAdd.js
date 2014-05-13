@@ -33,7 +33,7 @@ function submit_dataToko(){
 		$.post(
 			// URL
 			//
-			"http://demo.totalindo.net/FMCG-1.01/web-service/form-data_toko.php",
+			"http://fmcg.totalit.co.id/bimo/web-service/form-data_toko.php",
 			// Data POST
 			//
 			{

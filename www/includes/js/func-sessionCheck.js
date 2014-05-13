@@ -2,7 +2,7 @@ function session_check(){
 	$.post(
 		// URL
 		//
-		"http://demo.totalindo.net/FMCG-1.01/web-service/login-check.php",
+		"http://fmcg.totalit.co.id/bimo/web-service/login-check.php",
 		// When Succeeded
 		//
 		function(data){

@@ -7,7 +7,7 @@ function get_detail_produk(){
 		$.post(
 			// URL
 			//
-			"http://demo.totalindo.net/FMCG-1.01/web-service/form-get_detailProduk.php",
+			"http://fmcg.totalit.co.id/bimo/web-service/form-get_detailProduk.php",
 			// Data POST
 			//
 			{

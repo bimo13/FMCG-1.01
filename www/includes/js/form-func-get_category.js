@@ -4,7 +4,7 @@ function get_kategori_produk(){
 		
 		// URL
 		//
-		"http://demo.totalindo.net/FMCG-1.01/web-service/form-get-kategori_produk.php",
+		"http://fmcg.totalit.co.id/bimo/web-service/form-get-kategori_produk.php",
 		// When Succeeded
 		//
 		function(data){

@@ -5,7 +5,7 @@ function save_dataTransaksi(){
 	$.post(
 		// URL
 		//
-		"http://demo.totalindo.net/FMCG-1.01/web-service/save-dataTransaksi.php",
+		"http://fmcg.totalit.co.id/bimo/web-service/save-dataTransaksi.php",
 		// Data POST
 		//
 		{

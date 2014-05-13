@@ -3,7 +3,7 @@ function delete_dataProduk(src){
 	$.post(
 		// URL
 		//
-		"http://demo.totalindo.net/FMCG-1.01/web-service/delete-dataProduk.php",
+		"http://fmcg.totalit.co.id/bimo/web-service/delete-dataProduk.php",
 		// Data POST
 		//
 		{

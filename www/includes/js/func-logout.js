@@ -4,7 +4,7 @@ function logout(){
 	$.post(
 		// URL
 		//
-		"http://demo.totalindo.net/FMCG-1.01/web-service/logout.php",
+		"http://fmcg.totalit.co.id/bimo/web-service/logout.php",
 		// When Succeeded
 		//
 		function(data){
